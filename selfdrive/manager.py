@@ -388,7 +388,7 @@ def cleanup_all_processes(signal, frame):
 
 # ****************** run loop ******************
 
-def manager_init(should_register=Spinner):
+def manager_init(should_register=False):
   if should_register:
     reg_res = register()
     if reg_res:
