@@ -392,6 +392,9 @@ class CarInterface(CarInterfaceBase):
     # events
     events = self.create_common_events(ret)
 
+    if self.cp_cam.can_invalid_cnt >= 200 and self.CP.enableCamera and not self.CP.isPandaBlackDEPRECATED:
+      events.add(EventName.invalidGiraffeToyotaDEPRECATED)
+      
     # if self.cp_cam.can_invalid_cnt >= 200 and self.CP.enableCamera and not self.CP.isPandaBlack:
     #   events.add(EventName.invalidGiraffeToyotaDEPRECATED)
     if self.CS.low_speed_lockout and self.CP.openpilotLongitudinalControl:
