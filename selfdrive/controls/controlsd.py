@@ -69,6 +69,8 @@ class Controls:
       self.can_sock = messaging.sub_sock('can', timeout=can_timeout)
 
     # wait for one health and one CAN packet
+    panda_type = messaging.recv_one(self.sm.sock['pandaState']).pandaState.pandaType
+    has_relay = panda_type in [PandaType.blackPanda, PandaType.uno, PandaType.dos]
     hw_type = messaging.recv_one(self.sm.sock['health']).health.hwType
     has_relay = hw_type in [HwType.blackPanda, HwType.uno, HwType.dos]
     print("Waiting for CAN messages...")
